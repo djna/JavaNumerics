@@ -13,9 +13,24 @@ public class App
     public static void main( String[] args )
     {
         LOGGER.info( "Hello World!" );
+        exploreOverflow();
         exploreIntToByte(126, 130);
         exploreIntToByte(510, 514);
         exploreIntToByte(-514, -510);
+    }
+
+    private static void exploreOverflow(){
+        LOGGER.info("Investigate overflow");
+        int startingPoint = 2_147_483_645; // note we can punctuate using _
+        for ( int offset = 0; offset < 6; offset++){
+            int theValue =  startingPoint + offset;
+
+            String decimalValue = String.format("%12d", theValue);
+            String binaryVaue = numberAsBinary(theValue, 32);
+
+            LOGGER.info(decimalValue + " = " + binaryVaue);
+        }
+        LOGGER.info("\n");
     }
 
     // explore converting 32 bit int to 8 bit byte
@@ -31,6 +46,7 @@ public class App
             LOGGER.info("int " + bAsIntValue + " converted to byte "
                        + bAsByteValue + " = " + byteAsBits + " from " + intAsBits);
         }
+        LOGGER.info("\n");
     }
 
     // print an int value as a binary number
