@@ -14,7 +14,7 @@ public class App
     {
         LOGGER.info( "Hello World!" );
 
-        exploreBitwise();
+
 
     }
 
