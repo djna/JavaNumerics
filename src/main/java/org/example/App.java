@@ -23,12 +23,18 @@ public class App
         LOGGER.info("From " + from + " to " + to);
         for ( int b = from; b < to; b++ ) {
             String bAsIntValue = String.format("%8d", b);
-            String bAsByteValue = String.format("%8d", (byte)b);
-            String bAsBits = numberAsBinary(b, 8);
-            LOGGER.info("int " + bAsIntValue + " converted to byte " + bAsByteValue + " = " + bAsBits);
+            String bAsByteValue = String.format("%8d", (byte)b); // cast
+
+            String intAsBits = numberAsBinary(b, 32);
+            String byteAsBits = numberAsBinary(b, 8);
+
+            LOGGER.info("int " + bAsIntValue + " converted to byte "
+                       + bAsByteValue + " = " + byteAsBits + " from " + intAsBits);
         }
     }
 
+    // print an int value as a binary number
+    // show only the specified number of bits
     private static String numberAsBinary(int b, int bits){
         String formatString = "%" + bits + "s";
         String bAsBits = String.format(formatString,
