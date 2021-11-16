@@ -13,40 +13,40 @@ public class App
     public static void main( String[] args )
     {
         LOGGER.info( "Hello World!" );
-        exploreOverflow();
-        exploreIntToByte(126, 130);
-        exploreIntToByte(510, 514);
-        exploreIntToByte(-514, -510);
+
+        exploreBitwise();
+
     }
 
-    private static void exploreOverflow(){
-        LOGGER.info("Investigate overflow");
-        int startingPoint = 2_147_483_645; // note we can punctuate using _
-        for ( int offset = 0; offset < 6; offset++){
-            int theValue =  startingPoint + offset;
+   private static void exploreBitwise(){
+       LOGGER.info( "Explore Bitwise" );
 
-            String decimalValue = String.format("%12d", theValue);
-            String binaryVaue = numberAsBinary(theValue, 32);
+       int startingPoint = 4;
+       for (int offset = 0; offset <= 8; offset++ ){
+           int theValue = startingPoint - offset;
+           twosComplement(theValue);
+       }
+       twosComplement(0);
+       twosComplement(Integer.MIN_VALUE);
+   }
 
-            LOGGER.info(decimalValue + " = " + binaryVaue);
-        }
-        LOGGER.info("\n");
-    }
+    private static void twosComplement(int theValue) {
+        int complement = ~theValue;
+        int complementPlusOne = complement + 1;
+        int added = theValue + complementPlusOne;
 
-    // explore converting 32 bit int to 8 bit byte
-    private static void exploreIntToByte(int from, int to) {
-        LOGGER.info("From " + from + " to " + to);
-        for ( int b = from; b < to; b++ ) {
-            String bAsIntValue = String.format("%8d", b);
-            String bAsByteValue = String.format("%8d", (byte)b); // cast
+        String decimalValue = String.format("%12d", theValue);
 
-            String intAsBits = numberAsBinary(b, 32);
-            String byteAsBits = numberAsBinary(b, 8);
+        String theValueBinary = numberAsBinary(theValue, 32);
+        String complementBinary = numberAsBinary(complement, 32);
+        String complementPlusOneBinary = numberAsBinary(complementPlusOne, 32);
+        String addedBinary = numberAsBinary(added, 32);
 
-            LOGGER.info("int " + bAsIntValue + " converted to byte "
-                       + bAsByteValue + " = " + byteAsBits + " from " + intAsBits);
-        }
-        LOGGER.info("\n");
+        LOGGER.info(decimalValue + " = " + theValueBinary
+                + " = " + complementBinary
+                + " = " + complementPlusOneBinary
+                + " = " + addedBinary
+        );
     }
 
     // print an int value as a binary number
