@@ -28,6 +28,11 @@ public class App
        }
        twosComplement(0);
        twosComplement(Integer.MIN_VALUE);
+
+       int x = Integer.MIN_VALUE;
+       int y = -x;
+
+       LOGGER.info( "x equals y? " + ( x == y ));
    }
 
     private static void twosComplement(int theValue) {
