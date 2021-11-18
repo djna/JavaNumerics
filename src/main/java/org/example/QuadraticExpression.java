@@ -22,10 +22,8 @@ public class QuadraticExpression {
     }
 
     public BigDecimal getValueFor(BigDecimal x){
-        BigDecimal axSquared = a.multiply(x, mathContext).multiply(x, mathContext);
-        BigDecimal bx = b.multiply(x, mathContext);
-        BigDecimal roundedC = c.round(mathContext);
-        BigDecimal value = axSquared.add(bx, mathContext).add(roundedC, mathContext);
+        BigDecimal value = null;
+        //TODO implement
 
         return value;
     }
@@ -35,13 +33,11 @@ public class QuadraticExpression {
     }
 
     public BigDecimal[] solve(BigDecimal solveFor){
-        BigDecimal equationC = c.subtract(solveFor);
-        BigDecimal bSquaredMinus4ac = b.multiply(b).subtract( a.multiply(new BigDecimal(4) ).multiply(equationC) );
-        BigDecimal sqrtBSquaredMinus4ac = bSquaredMinus4ac.sqrt(mathContext);
 
-        BigDecimal plusSolution = b.negate().add(sqrtBSquaredMinus4ac).divide(a.multiply(new BigDecimal(2)));
-        BigDecimal minusSolution = b.negate().subtract(sqrtBSquaredMinus4ac).divide(a.multiply(new BigDecimal(2)));
+        BigDecimal plusSolution =null;
+        BigDecimal minusSolution = null;
 
+        // TODO implement
         return new BigDecimal[] {plusSolution, minusSolution};
     }
 

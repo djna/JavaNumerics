@@ -6,7 +6,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Rule;
+
+// BigDecimal throws exception instead of using NaN
 import org.junit.rules.ExpectedException;
 
 import java.math.BigDecimal;
@@ -16,10 +17,8 @@ import java.math.BigDecimal;
  */
 public class QuadraticTest
 {
-
-
     @Test
-    public void simple()
+    public void expression()
     {
         QuadraticExpression simpleExpression = new QuadraticExpression(1, 1, -6);
         assertEquals( "simpleExpression", new BigDecimal(0) , simpleExpression.getValueFor(-3));
@@ -62,6 +61,7 @@ public class QuadraticTest
         QuadraticExpression simpleExpression = new QuadraticExpression(1, -5e50, 6e100);
         BigDecimal[] solution = simpleExpression.solve(0);
 
+        // TODO - use debugger to see why BigDecimal.ZERO.compareTo() is used
         Assert.assertEquals("first solution yields zero",
                 0, BigDecimal.ZERO.compareTo(simpleExpression.getValueFor(solution[1])) );
         Assert.assertEquals("second solution yields zero",
