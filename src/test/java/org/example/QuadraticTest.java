@@ -12,11 +12,6 @@ import org.junit.Test;
  */
 public class QuadraticTest
 {
-
-
-
-    private QuadraticExpression linearExpression = new QuadraticExpression(0, 3, 9);
-
     @Test
     public void simple()
     {
@@ -28,22 +23,22 @@ public class QuadraticTest
 
     @Test
     public void squareSolve() {
-        QuadraticExpression simpleExpression = new QuadraticExpression(1, 0, -9);
-        double[] solution = simpleExpression.solve(0);
+        QuadraticExpression squareExpression = new QuadraticExpression(1, 0, -9);
+        double[] solution = squareExpression.solve(0);
         Assert.assertArrayEquals(new double[]{+3, -3}, solution, 0.0);
     }
 
     @Test
     public void simpleSolve() {
         QuadraticExpression simpleExpression = new QuadraticExpression(1, 1, -6);
-       double[] solution = simpleExpression.solve(0);
+        double[] solution = simpleExpression.solve(0);
         Assert.assertArrayEquals(new double[]{2, -3}, solution,0.0);
     }
 
     @Test
     public void badSolve() {
-        QuadraticExpression simpleExpression = new QuadraticExpression(0, 4, -8);
-        double[] solution = simpleExpression.solve(0);
+        QuadraticExpression linearExpression = new QuadraticExpression(0, 4, -8);
+        double[] solution = linearExpression.solve(0);
         assertTrue("invalid quadratic", java.lang.Double.isNaN(solution[0]));
         assertTrue("invalid quadratic", java.lang.Double.isInfinite(solution[1]));
     }
