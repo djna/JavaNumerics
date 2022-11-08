@@ -42,4 +42,11 @@ public class QuadraticTest
         assertTrue("invalid quadratic", java.lang.Double.isNaN(solution[0]));
         assertTrue("invalid quadratic", java.lang.Double.isInfinite(solution[1]));
     }
+
+    @Test
+    public void bigSolve() {
+        QuadraticExpression bigExpression = new QuadraticExpression(1, -5e50, 6e100);
+        double[] solution = bigExpression.solve(0);
+        Assert.assertArrayEquals(new double[]{3e50, 2e50}, solution,1e35);
+    }
 }
