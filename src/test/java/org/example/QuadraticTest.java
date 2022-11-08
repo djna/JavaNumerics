@@ -47,6 +47,6 @@ public class QuadraticTest
     public void bigSolve() {
         QuadraticExpression bigExpression = new QuadraticExpression(1, -5e50, 6e100);
         double[] solution = bigExpression.solve(0);
-        Assert.assertArrayEquals(new double[]{3e50, 2e50}, solution,1e35);
+        Assert.assertArrayEquals(new double[]{3e50, 2e50}, solution,0.0);
     }
 }

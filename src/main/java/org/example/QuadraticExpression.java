@@ -11,21 +11,17 @@ public class QuadraticExpression {
     }
 
     public double getValueFor(double x){
-        double axSquared = a * x * x;
-        double bx = b * x;
-        double value = axSquared + bx + c;
+        // TODO calculate value of quadratic for this x
+        double value = Double.NaN;
 
         return value;
     }
 
     public double[] solve(double solveFor){
         double equationC = c - solveFor;
-        double bSquaredMinus4ac = (b * b) - ( 4 * a * equationC );
-        double sqrtBSquaredMinus4ac = Math.sqrt(bSquaredMinus4ac);
-
-        double plusSolution = ((-b) + sqrtBSquaredMinus4ac) / ( 2 * a);
-        double minusSolution = ((-b) - sqrtBSquaredMinus4ac) / ( 2 * a);
-
+        // TODO apply the formula using this.a, this.b, and equationC
+        double plusSolution = Double.NaN;
+        double minusSolution = Double.NaN;
         return new double[] {plusSolution, minusSolution};
     }
 
